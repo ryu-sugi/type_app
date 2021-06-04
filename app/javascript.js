@@ -35,7 +35,10 @@ const createText = () => {
 const keyDown = e => {
  if(e.key === checkTexts[0].textContent) {
   checkTexts[0].className = 'add-color';
+
   checkTexts.shift();
+
+  if(!checkTexts.length) createText();
  }
 };
 
@@ -48,4 +51,4 @@ const timer = () => {};
 start.addEventListener('click', () => {
  createText();
  document.addEventListener('keydown', keyDown);
-});
+})
