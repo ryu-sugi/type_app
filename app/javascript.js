@@ -20,8 +20,11 @@ const textLists = [
 const createText = () => {
  const p = document.getElementById('text');
  const rnd = Math.floor(Math.random() * textLists.length);
-
- p.textContent = textLists[rnd];
+ textLists[rnd].split('').map(value => {
+  const span = document.createElement('span');
+  span.textContent = value;
+  p.appendChild(span);
+ })
 }; 
 
 createText();
