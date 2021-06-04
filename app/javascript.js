@@ -46,9 +46,24 @@ const rankCheck = rank => {};
 
 const gameOver = id => {};
 
-const timer = () => {};
+const timer = () => {
+ let time = 60;
+
+ const count = document.getElementById('count');
+ const id = setInterval(() => {
+
+  count.textContent = time--;
+
+ }, 1000);
+};
 
 start.addEventListener('click', () => {
+
+ timer();
+
  createText();
+
+ start.style.display = 'none';
+ 
  document.addEventListener('keydown', keyDown);
 })
