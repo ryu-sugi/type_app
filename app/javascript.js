@@ -35,20 +35,34 @@ const createText = () => {
 const keyDown = e => {
  if(e.key === checkTexts[0].textContent) {
   checkTexts[0].className = 'add-color';
-
   checkTexts.shift();
-
   if(!checkTexts.length) createText();
  }
 };
 
 const rankCheck = rank => {};
 
-const gameOver = id => {};
+const gameOver = id => {
+ clearInterval(id);
+ console.log('END')
+};
 
-const timer = () => {};
+const timer = () => {
+ let time = 60;
+ const count = document.getElementById('count');
+ const id = setInterval(() => {
+  if(time <= 0) gameOver(id);
+  count.textContent = time--;
+  }, 1000);
+};
 
 start.addEventListener('click', () => {
+
+ timer();
+
  createText();
+
+ start.style.display = 'none';
+
  document.addEventListener('keydown', keyDown);
 })
