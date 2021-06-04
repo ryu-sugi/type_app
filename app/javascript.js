@@ -34,11 +34,19 @@ const createText = () => {
 let score = 0;
 
 const keyDown = e => {
+ wrap.style.backgroundColor = '#666';
+
  if(e.key === checkTexts[0].textContent) {
   checkTexts[0].className = 'add-color';
   checkTexts.shift();
   score++;
   if(!checkTexts.length) createText();
+ 
+ } else if(e.key === 'Shift') {
+  wrap.style.backgroundColor = '#666';
+  
+ } else {
+  wrap.style.backgroundColor = '#cd5c5c';
  }
 };
 
