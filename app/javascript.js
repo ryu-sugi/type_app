@@ -29,7 +29,9 @@ const createText = () => {
 }; 
 
 
-const keyDown = e => {};
+const keyDown = e => {
+ console.log('キーが入力されました')
+};
 
 const rankCheck = rank => {};
 
@@ -39,4 +41,5 @@ const timer = () => {};
 
 start.addEventListener('click', () => {
  createText();
+ document.addEventListener('keydown', keyDown);
 });
