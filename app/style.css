@@ -3,13 +3,13 @@ body {
  text-align: center;
 }
 
-.count {
+#count {
  margin: 0;
  font-weight: bold;
  color: #888;
 }
 
-.wrap {
+#wrap {
  margin-top: 20px;
  padding: 20px 10px;
  background-color: #666;
