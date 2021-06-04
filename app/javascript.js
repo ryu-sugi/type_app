@@ -17,20 +17,26 @@ const textLists = [
   'programming'
 ];
 
+let checkTexts = [];
+
 const createText = () => {
  const p = document.getElementById('text');
  const rnd = Math.floor(Math.random() * textLists.length);
  p.textContent = '';
- textLists[rnd].split('').map(value => {
+ checkTexts = textLists[rnd].split('').map(value => {
   const span = document.createElement('span');
   span.textContent = value;
   p.appendChild(span);
+  return span;
  })
 }; 
 
 
 const keyDown = e => {
- console.log(e.key);
+ if(e.key === checkTexts[0].textContent) {
+  checkTexts[0].className = 'add-color';
+  checkTexts.shift();
+ }
 };
 
 const rankCheck = rank => {};
