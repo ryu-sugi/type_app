@@ -31,20 +31,36 @@ const createText = () => {
  })
 }; 
 
+let score = 0;
 
 const keyDown = e => {
  if(e.key === checkTexts[0].textContent) {
   checkTexts[0].className = 'add-color';
   checkTexts.shift();
+  score++;
   if(!checkTexts.length) createText();
  }
 };
 
-const rankCheck = rank => {};
+const rankCheck = rank => {
+ let text = '';
+
+ if(score < 100) {
+   text = `あなたのランクはCです。\nBランクまであと${100 - score}文字です。`;
+  } else if(score < 200) {
+   text = `あなたのランクはBです。\nAランクまであと${200 - score}文字です。`;    
+  } else if(score < 300) {
+   text = `あなたのランクはAです。\nSランクまであと${300 - score}文字です。`;    
+  } else if(score >= 300) {
+   text = `あなたのランクはSです。\nおめでとうございます！`;    
+  }
+  return `${score}文字打てました！\n${text}\n【OK】リトライ／【キャンセル】終了`;
+};
 
 const gameOver = id => {
  clearInterval(id);
- console.log('END')
+ const result = confirm(rankCheck(score));
+ if(result) window.location.reload();
 };
 
 const timer = () => {
@@ -57,12 +73,8 @@ const timer = () => {
 };
 
 start.addEventListener('click', () => {
-
  timer();
-
  createText();
-
  start.style.display = 'none';
-
  document.addEventListener('keydown', keyDown);
 })
