@@ -30,7 +30,7 @@ const createText = () => {
 
 
 const keyDown = e => {
- console.log('キーが入力されました')
+ console.log(e.key);
 };
 
 const rankCheck = rank => {};
